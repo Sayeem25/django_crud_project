@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <title>CRUD Project</title>
+
+<style>
+
+body{
+		font-family: 'Varela Round', sans-serif;
+		font-size: 13px;
+	}
+    
+.tabble-title {
+    background-color: #808080;
+    margin-top: 50px;
+}
+
+.tabble-title h1{
+    padding: 10px;
+    color: ffffff;
+}
+.butn{
+    margin-left: 200px;
+    padding: 20px;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabble-responsive">
+            <div class="tabble-title">
+               <div class="row">
+                     <div class="col-lg-6">
+                        <h1>All Informations<br></h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="butn">
+                        <a href="{% url 'create_info' %}"><button type="button" class="btn btn-success">Add New Employe</button></a>
+                        <a href="#"><button type="button" class="btn btn-danger">Danger</button></a>
+                        
+                    </div>
+               </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Father</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for informations in info %}
+                <tr>
+                <td>{{informations.name}}</td>
+                <td>{{informations.email}}</td>
+                <td>{{informations.father}}</td>
+                <td>{{informations.phone}}</td>
+                <td>
+                    <a href="" class="edit" data-toggle="modal"><i class="material-icons"  data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+					<a href="{% url 'delete_info' informations.pk  %}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
+
+</body>
+</html>
